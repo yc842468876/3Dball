@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>three.js css3d - periodic table</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			html, body {
+				height: 100%;
+			}
+
+			body {
+				background-color: #000000;
+				margin: 0;
+				font-family: Helvetica, sans-serif;;
+				overflow: hidden;
+			}
+
+			.element {
+				width: 120px;
+				height: 120px;
+				box-shadow: 0px 0px 12px rgba(0,255,255,0.5);
+				border: 1px solid rgba(127,255,255,0.25);
+				text-align: center;
+				cursor: default;
+			}
+
+			.element:hover {
+				box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
+				border: 1px solid rgba(127,255,255,0.75);
+			}
+		</style>
+	</head>
+	<body>
+		<script src="js/three.min.js"></script>
+		<script src="js/TrackballControls.js"></script>
+		<script src="js/CSS3DRenderer.js"></script>
+
+		<div id="container"></div>
+
+		<script>
+
+			const	list = [
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'},
+				{url: '/imgs/user.jpg'}, 
+			];
+
+			var camera, scene, renderer;
+			var controls;
+
+			init();
+
+
+			function init() {
+
+				camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 );
+				camera.position.z = 3000;
+
+				scene = new THREE.Scene();
+
+				// table
+				var vector = new THREE.Vector3();
+
+				for ( var i = 0, l = list.length; i < list.length; i ++ ) {
+
+					var element = document.createElement( 'div' );
+					element.className = 'element';
+					element.style.backgroundColor = 'rgba(0,127,127,' + ( Math.random() * 0.5 + 0.25 ) + ')';
+
+					var phi = Math.acos( -1 + ( 2 * i ) / l );
+					var theta = Math.sqrt( l * Math.PI ) * phi;
+
+					var object = new THREE.CSS3DObject( element );
+
+					object.position.x = 800 * Math.cos( theta ) * Math.sin( phi );
+					object.position.y = 800 * Math.sin( theta ) * Math.sin( phi );
+					object.position.z = 800 * Math.cos( phi );
+					vector.copy( object.position ).multiplyScalar( 2 );
+					object.lookAt( vector );
+					scene.add( object );
+					
+				}
+
+				renderer = new THREE.CSS3DRenderer();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.domElement.style.position = 'absolute';
+				document.getElementById( 'container' ).appendChild( renderer.domElement );
+
+				controls = new THREE.TrackballControls( camera, renderer.domElement );
+				controls.rotateSpeed = 0.5;
+				controls.minDistance = 500;
+				controls.maxDistance = 6000;
+				controls.addEventListener( 'change', render );
+
+				window.addEventListener( 'resize', onWindowResize, false );
+				animate();
+			}
+
+
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+				render();
+
+			}
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+
+				controls.update();
+
+			}
+
+			function render() {
+
+				renderer.render( scene, camera );
+
+			}
+
+		</script>
+	</body>
+</html>
